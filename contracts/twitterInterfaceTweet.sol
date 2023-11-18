@@ -1,23 +1,22 @@
- // SPDX-License-Identifier: MIT
-
-
+// SPDX-License-Identifier: MIT
 
 //import "@openzeppelin/contracts/access/Ownable.sol";
 
 pragma solidity ^0.8.0;
 
 interface IProfile {
-    struct  UserProfile {
+    // CODE HERE
+
+    struct UserProfile {
         string displayName;
         string bio;
     }
 
     // CODE HERE
 
-    function getProfile(address _user)
-        external
-        view
-        returns (UserProfile memory);
+    function getProfile(
+        address _user
+    ) external view returns (UserProfile memory);
 }
 
 contract Twitter {
@@ -32,7 +31,7 @@ contract Twitter {
         uint256 timestamp;
         uint256 likes;
     }
-    
+
     mapping(address => Tweet[]) public tweets;
     // profile contract defined here
     IProfile public profileContract;
@@ -70,7 +69,7 @@ contract Twitter {
     constructor(address _profileContract) {
         owner = msg.sender;
         profileContract = IProfile(_profileContract);
-    }
+    } // very important attach the contract address of the Profile Contract
 
     modifier onlyOwner() {
         require(msg.sender == owner, "you are not the owner");

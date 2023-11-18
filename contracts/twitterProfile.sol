@@ -13,19 +13,15 @@ contract Profile {
 
     mapping(address => UserProfile) public profiles;
 
-  
-
     function setProfile(string memory name, string memory bio) public {
         UserProfile memory newUser = UserProfile({displayName: name, bio: bio});
 
         profiles[msg.sender] = newUser;
     }
 
-      function getProfile(address _user)
-        public
-        view
-        returns (UserProfile memory)
-    {
+    function getProfile(
+        address _user
+    ) public view returns (UserProfile memory) {
         return profiles[_user];
     }
 }

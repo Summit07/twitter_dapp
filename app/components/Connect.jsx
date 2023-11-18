@@ -31,9 +31,7 @@ const Connect = () => {
   // const [tweet, setTweets] = useState(false);
   const [name, setName] = useState(false);
   const [bio, setBio] = useState(false);
-
   const [ball, setBall] = useState(false);
-
   const [isConnected, setIsConnected] = useState(false);
   const [hasMetamask, setHasMetamask] = useState(false);
   const [hasProfile, setHasProfile] = useState(false);
@@ -69,22 +67,23 @@ const Connect = () => {
     if (typeof window.ethereum !== "undefined") {
       const tempProvider = new ethers.BrowserProvider(window.ethereum);
 
-      tempProvider.on("network", (newNetwork, oldNetwork) => {
-        // When a Provider makes its initial connection, it emits a "network"
-        // event with a null oldNetwork along with the newNetwork. So, if the
-        // oldNetwork exists, it represents a changing network
-        if (oldNetwork) {
-          window.location.reload();
-        }
-      });
+      // tempProvider.on("network", (newNetwork, oldNetwork) => {
+      //   // When a Provider makes its initial connection, it emits a "network"
+      //   // event with a null oldNetwork along with the newNetwork. So, if the
+      //   // oldNetwork exists, it represents a changing network
+      //   if (oldNetwork) {
+      //     window.location.reload();
+      //   }
+      // });
+
       // setProvider(tempProvider);
 
       let tempSigner = await tempProvider.getSigner();
       let address = await tempSigner.getAddress();
       let balance = await tempProvider.getBalance(address);
       setBall(ethers.formatEther(balance));
-      console.log(address);
-      console.log("SSSSSSSSSSSSSSSSSSSSSSSSSSSSS", ethers.formatEther(balance));
+      // console.log(address);
+      // console.log("SSSSSSSSSSSSSSSSSSSSSSSSSSSSS", ethers.formatEther(balance));
       setSigner(tempSigner);
 
       dispatch(setWallet(address));

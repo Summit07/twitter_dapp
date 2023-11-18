@@ -30,7 +30,7 @@ const Profile = () => {
           onSubmit={handelsubmit}
           className="flex flex-col justify-center items-center"
         >
-          <label>Tweet</label>
+          <label>UserName</label>
           <input
             type="text"
             onChange={(e) => setName(e.target.value)}
@@ -38,7 +38,7 @@ const Profile = () => {
             className="w-full"
             required
           />
-          <label>Bio</label>
+          <label>Biograpny</label>
           <input
             type="text"
             onChange={(e) => setBio(e.target.value)}

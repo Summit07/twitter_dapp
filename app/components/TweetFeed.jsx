@@ -6,7 +6,7 @@ const TweetFeed = () => {
   const router = useRouter();
   const { address, user, tweet, tweetContract, profileContract, status } =
     useSelector((state) => state.wallet);
-  console.log(tweet);
+
   const [username, setName] = useState(false);
 
   async function handelsubmit(e) {
